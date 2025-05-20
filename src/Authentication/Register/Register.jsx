@@ -34,6 +34,7 @@ const Register= () => {
     navigate('/');
   };
 
+  
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50 p-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border border-green-200">

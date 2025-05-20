@@ -5,6 +5,8 @@ import Register from "../Authentication/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../ErrorPage/Errorpage";
 import AddRecipe from "../Comonent/AddRecipie/AddRecipe";
+import AllRecipes from "../Comonent/AllRecipes/AllRecipes";
+import Loader from "../Loader/Loader";
 
 
 export const router=createBrowserRouter([
@@ -24,6 +26,12 @@ export const router=createBrowserRouter([
             {
                 path:'/addrecipes',
                 element:<PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
+            },
+            {
+                path:'/allrecipes',
+                loader:()=>fetch('http://localhost:2000/recipes'),
+                Component:AllRecipes,
+                hydrateFallbackElement:<Loader></Loader>
             }
         ]
 

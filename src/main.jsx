@@ -8,12 +8,13 @@ import AuthProvider from './Context/AuthProvider'
 
 
 
-createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router}>
 
-      </RouterProvider>
-    </AuthProvider>,
-  {/* </StrictMode>, */}
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+      <AuthProvider>
+        <RouterProvider router={router}>
+
+        </RouterProvider>
+      </AuthProvider>
+  </StrictMode>,
 )

@@ -155,12 +155,6 @@ const AddRecipe = () => {
                                 ))
 
                             }
-{/* 
-                            <input onChange={handleSelected} type="checkbox" id='breakfast' value='Breakfast' />
-                            <label className='text-white' htmlFor="breakfast">Breakfast</label>
-
-                            <input onChange={handleSelected} type="checkbox" id='lunch' value='Lunch' />
-                            <label className='text-white' htmlFor="breakfast">Lunch</label> */}
                         </div>
                     </div>
 
