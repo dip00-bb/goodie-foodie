@@ -3,6 +3,8 @@ import Layout from "../WebsiteLayout/Layout";
 import Login from "../Authentication/Login/Login";
 import Register from "../Authentication/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import ErrorPage from "../ErrorPage/Errorpage";
+import AddRecipe from "../Comonent/AddRecipie/AddRecipe";
 
 
 export const router=createBrowserRouter([
@@ -20,12 +22,16 @@ export const router=createBrowserRouter([
                 Component:Register
             },
             {
-                path:'/details',
-                element:<PrivateRoute><div>RESt</div></PrivateRoute>
+                path:'/addrecipes',
+                element:<PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
             }
         ]
 
 
+    },
+    {
+        path:'*',
+        Component:ErrorPage
     }
 
 ])
