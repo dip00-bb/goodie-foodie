@@ -8,10 +8,10 @@ const Navbar = () => {
     const [isHidden,setHidden]=useState(true)
 
     const link = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/allrecipes'>All Recipes</NavLink></li>
-        <li><NavLink to='/addrecipes'>Add Recipes</NavLink></li>
-        <li><NavLink to='/Myrecipes'>My Recipes</NavLink></li>
+        <li><NavLink className='text-xl font-medium' to='/'>Home</NavLink></li>
+        <li><NavLink className='text-xl font-medium' to='/allrecipes'>All Recipes</NavLink></li>
+        <li><NavLink className='text-xl font-medium' to='/addrecipes'>Add Recipes</NavLink></li>
+        <li><NavLink className='text-xl font-medium' to='/Myrecipes'>My Recipes</NavLink></li>
     </>
 
 
