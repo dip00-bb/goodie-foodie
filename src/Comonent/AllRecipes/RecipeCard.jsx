@@ -22,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
         className="w-full h-48 object-cover"
       />
       <div className="p-4">
-        <h3 className="text-xl font-bold text-gray-800 mb-2 text-center mb-6">{title}</h3>
+        <h3 className="text-xl font-bold text-gray-800 text-center mb-6">{title}</h3>
 
         <div className="text-sm space-y-1 mb-4 flex justify-between">
           <div className="flex flex-col items-center">

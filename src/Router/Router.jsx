@@ -42,6 +42,7 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/myrecipes',
+                loader:()=>fetch('http://localhost:2000/myRecipes'),
                 element:<PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
             }
         ]

@@ -7,31 +7,34 @@ import { toast } from 'react-toastify';
 const AddRecipe = () => {
 
     const [checkedItem, setItem] = useState([])
-    const [cuisineType,setCusine]=useState('Italian');
+    const [cuisineType, setCusine] = useState('Italian');
 
     const handleSubmitData = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        const categories={categories:checkedItem}
-        Object.assign(data,categories)
-        const cuisine={cuisine:cuisineType}
-        Object.assign(data,cuisine)
+        const categories = { categories: checkedItem }
+        Object.assign(data, categories)
+        const cuisine = { cuisine: cuisineType }
+        Object.assign(data, cuisine)
         console.log(data)
 
-        fetch(`http://localhost:2000/recipes`,{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch(`http://localhost:2000/recipes`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(data)
-        }).then(res=>res.json())
-        .then(data=>{
-            if(data.acknowledged){
-                toast.success("Recipe Added Successfully")
-            } 
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success("Recipe Added Successfully")
+                }
         })
+
+        
+
     }
 
     const handleSelected = (e) => {
@@ -46,17 +49,17 @@ const AddRecipe = () => {
         }
     }
 
-    const handleCusine=e=>{
-        const value=e.target.value;
+    const handleCusine = e => {
+        const value = e.target.value;
         setCusine(value)
     }
     useEffect(() => {
         console.log(checkedItem);
         console.log(cuisineType)
-    }, [checkedItem,cuisineType])
+    }, [checkedItem, cuisineType])
 
     return (
-        <div style={{backgroundImage:`url('./recipe_full.jpg')`}} className="min-h-screen flex items-center justify-center px-4 py-10">
+        <div style={{ backgroundImage: `url('./recipe_full.jpg')` }} className="min-h-screen flex items-center justify-center px-4 py-10">
             <div className="rounded-3xl p-8 border-0">
                 <h2 className="text-4xl font-extrabold text-yellow-500 text-center mb-8">
                     🍽️ Share Your Recipe
@@ -146,9 +149,9 @@ const AddRecipe = () => {
                         <div className="flex flex-wrap gap-2 items-center">
                             {
 
-                                ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map((category,index) => (
+                                ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map((category, index) => (
                                     <div className='flex gap-2' key={index}>
-                                        <input onChange={handleSelected} type='checkbox' value={category} id={index}/>
+                                        <input onChange={handleSelected} type='checkbox' value={category} id={index} />
                                         <label className='text-white' htmlFor={index}>{category}</label>
                                     </div>
 

@@ -26,14 +26,14 @@ const RecipeDetails = () => {
             <div className='px-6 py-5'>
                 <div className="p-6 bg-white/70">
 
-                    <div className="mb-4">
+                    <div className="mb-4 wrap-break-word">
                         <h3 className="text-lg font-semibold mb-2 border-b pb-1">Ingredients</h3>
                         <p className="text-sm text-gray-700">
                             {ingredients}
                         </p>
                     </div>
 
-                    <div className="mb-4">
+                    <div className="mb-4 wrap-break-word">
                         <h3 className="text-lg font-semibold mb-2 border-b pb-1">Instructions</h3>
                         <p className="text-sm text-gray-700">
                             {
