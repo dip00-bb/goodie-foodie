@@ -7,6 +7,7 @@ import ErrorPage from "../ErrorPage/Errorpage";
 import AddRecipe from "../Comonent/AddRecipie/AddRecipe";
 import AllRecipes from "../Comonent/AllRecipes/AllRecipes";
 import Loader from "../Loader/Loader";
+import RecipeDetails from "../Comonent/RecipeDetails/RecipeDetails";
 
 
 export const router=createBrowserRouter([
@@ -32,6 +33,11 @@ export const router=createBrowserRouter([
                 loader:()=>fetch('http://localhost:2000/recipes'),
                 Component:AllRecipes,
                 hydrateFallbackElement:<Loader></Loader>
+            },
+            {
+                path:'/allrecipes/:id',
+                loader:(params)=>fetch(`http://localhost:2000/recipes/${params.id}`),
+                Component:RecipeDetails
             }
         ]
 

@@ -53,7 +53,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div onClick={()=>setHidden(!isHidden)} className="w-10 rounded-full relative">
                                 <img
-                                    alt="Tailwind CSS Navbar component"
+                                    alt='not provide'
                                     src={user.photoURL} />
                             </div>
                         </div>

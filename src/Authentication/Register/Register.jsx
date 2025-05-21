@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
+import { toast } from 'react-toastify';
 
-const Register= () => {
+const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
-  const validatePassword = (pwd) => {
-    const hasUpper = /[A-Z]/.test(pwd);
-    const hasLower = /[a-z]/.test(pwd);
-    const hasLength = pwd.length >= 6;
+  const { setUser, userRegister, googleLogIn } = use(AuthContext);
+
+  const validatePassword = (password) => {
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasLength = password.length >= 6;
 
     if (!hasUpper) return 'Password must contain at least one uppercase letter.';
     if (!hasLower) return 'Password must contain at least one lowercase letter.';
@@ -17,39 +21,57 @@ const Register= () => {
     return '';
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     const error = validatePassword(password);
+
     if (error) {
       setPasswordError(error);
     } else {
       setPasswordError('');
-      alert('User registered successfully');
-      navigate('/');
+      userRegister(email, password)
+        .then(result => {
+          setUser(result.user)
+          navigate('/')
+          toast.success("Register Successful")
+        }).catch(error => {
+          toast.warn(error.message)
+        })
     }
-  };
+
+  }
 
   const handleGoogleLogin = () => {
-    alert('Google login successful');
-    navigate('/');
+    googleLogIn()
+      .then(result => {
+        setUser(result.user);
+        console.log(result.user);
+        navigate('/')
+        toast.success("Register Successful")
+
+      })
+      .catch(error => toast.warn(error.message))
   };
 
-  
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-50 p-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border border-green-200">
         <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Register</h2>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="space-y-4" onSubmit={handleRegister}>
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
-            <input type="text" required placeholder="Your name"
+            <input type="text" required placeholder="Your name" name='name'
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" required placeholder="Your email"
+            <input type="email" required placeholder="Your email" name='email'
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
           </div>
 
@@ -65,6 +87,7 @@ const Register= () => {
               type="password"
               required
               placeholder="Create a password"
+              name='password'
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
