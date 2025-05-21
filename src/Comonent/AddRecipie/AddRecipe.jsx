@@ -56,7 +56,7 @@ const AddRecipe = () => {
     }, [checkedItem,cuisineType])
 
     return (
-        <div className="min-h-screen flex items-center bg-[url(./recipe_full.jpg)] justify-center px-4 py-10">
+        <div style={{backgroundImage:`url('./recipe_full.jpg')`}} className="min-h-screen flex items-center justify-center px-4 py-10">
             <div className="rounded-3xl p-8 border-0">
                 <h2 className="text-4xl font-extrabold text-yellow-500 text-center mb-8">
                     🍽️ Share Your Recipe
