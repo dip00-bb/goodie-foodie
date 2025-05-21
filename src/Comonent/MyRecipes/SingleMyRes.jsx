@@ -1,7 +1,45 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
-const SingleMyRes = ({recipe}) => {
-    const {imageURL,title,ingredients,instruction,prepTime,likes,categories,cuisine}=recipe
+const SingleMyRes = ({ recipe ,setRecipes,recipes}) => {
+    const { _id, imageURL, title, ingredients, instruction, prepTime, likes, categories, cuisine } = recipe;
+
+    const handleDeleteRecipe = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:2000/recipes/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.acknowledged) {
+                            const remainingRecipes= recipes.filter(rec => rec._id !== id);
+                            setRecipes(remainingRecipes)
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+            }
+        });
+
+    }
+
+
+    // const handleUpdateRecipe=()
+
     return (
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 max-w-md mx-auto">
             <img src={imageURL} alt={title} className="w-full h-48 object-cover" />
@@ -21,9 +59,7 @@ const SingleMyRes = ({recipe}) => {
                         >
                             Update
                         </button>
-                        <button
-                            className="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded"
-                        >
+                        <button onClick={()=>handleDeleteRecipe(_id)} className="bg-red-500 hover:bg-red-600 text-white text-sm font-semibold py-1 px-3 rounded cursor-pointer">
                             Delete
                         </button>
                     </div>
