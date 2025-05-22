@@ -1,7 +1,7 @@
 
 
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 
 const AddRecipe = () => {
@@ -53,10 +53,10 @@ const AddRecipe = () => {
         const value = e.target.value;
         setCusine(value)
     }
-    useEffect(() => {
-        console.log(checkedItem);
-        console.log(cuisineType)
-    }, [checkedItem, cuisineType])
+    // useEffect(() => {
+    //     console.log(checkedItem);
+    //     console.log(cuisineType)
+    // }, [checkedItem, cuisineType])
 
     return (
         <div style={{ backgroundImage: `url('./recipe_full.jpg')` }} className="min-h-screen flex items-center justify-center px-4 py-10">
