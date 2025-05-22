@@ -1,14 +1,16 @@
 
 
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthContext';
 
 const AddRecipe = () => {
 
     const [checkedItem, setItem] = useState([])
     const [cuisineType, setCusine] = useState('Italian');
-
+    const {user}=use(AuthContext);
+    console.log("user user user",user.uid)
     const handleSubmitData = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -17,7 +19,9 @@ const AddRecipe = () => {
         const categories = { categories: checkedItem }
         Object.assign(data, categories)
         const cuisine = { cuisine: cuisineType }
-        Object.assign(data, cuisine)
+        const uid={UID:user.uid}
+        Object.assign(data, cuisine);
+        Object.assign(data,uid);
         console.log(data)
 
         fetch(`http://localhost:2000/recipes`, {

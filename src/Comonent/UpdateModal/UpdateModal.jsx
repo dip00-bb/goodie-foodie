@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
-const UpdateModal = ({ recipe }) => {
-    const { imageURL, title, ingredients, instruction, prepTime, likes, categories, cuisine } = recipe;
+const UpdateModal = ({ recipe, recipes, setRecipes,setHidden }) => {
+    const { _id, imageURL, title, ingredients, instruction, prepTime, categories, cuisine } = recipe;
     // console.log(categories)
 
     const [checkedItem, setItem] = useState(categories)
     const [cuisineType, setCusine] = useState('Italian');
 
-    const handleSubmitData = (e) => {
+    const handleSubmitData = (e, id) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
@@ -19,17 +19,27 @@ const UpdateModal = ({ recipe }) => {
         Object.assign(data, cuisine)
         console.log(data)
 
-        fetch(`http://localhost:2000/recipes`, {
+        fetch(`http://localhost:2000/recipes/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(data)
         }).then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success("Recipe Added Successfully")
+            .then(result => {
+                console.log("after after",result)
+                console.log(result.modifiedCount)
+                if (result.modifiedCount) {
+                    const notFilteredRecipes = recipes.filter(recipe=>recipe._id !== id);
+                    Object.assign(data,{_id:id})
+                    setRecipes([...notFilteredRecipes, data])
+                    console.log("after update", data);
+                    console.log("vvvvvvvvvvv",notFilteredRecipes)
+                    setHidden(true);
+                    
+                    
                 }
+
             })
     }
 
@@ -55,7 +65,7 @@ const UpdateModal = ({ recipe }) => {
                 🍽️ Update Your Recipe
             </h2>
 
-            <form onSubmit={handleSubmitData} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={(e) => handleSubmitData(e, _id)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 <div className="col-span-1 md:col-span-2">
                     <label className="block mb-2 text-sm font-medium text-white">Image URL</label>
@@ -133,7 +143,6 @@ const UpdateModal = ({ recipe }) => {
                     <input
                         type="number"
                         name='likes'
-                        defaultValue={likes}
                         value="0"
                         readOnly
                         className="w-full border border-gray-200 bg-black/55 text-white px-4 py-2 rounded-lg cursor-not-allowed"
@@ -147,7 +156,7 @@ const UpdateModal = ({ recipe }) => {
 
                             ["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map((category, index) => (
                                 <div className='flex gap-2' key={index}>
-                                    <input onChange={handleSelected} type='checkbox' value={category} id={index} checked={categories.includes(category)} />
+                                    <input onChange={handleSelected} type='checkbox' value={category} id={index} defaultChecked={categories?.includes(category)} />
                                     <label className='text-white' htmlFor={index}>{category}</label>
                                 </div>
                             ))
