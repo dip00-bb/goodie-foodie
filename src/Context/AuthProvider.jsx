@@ -1,41 +1,46 @@
 import React, { useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup,signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { AuthContext } from './AuthContext';
 import { auth } from '../Firebase/firebase.config';
 
 
 
 
-const AuthProvider = ({children}) => {
-
-    
-
-    const provider=new GoogleAuthProvider()
-    const [isLoading,setLoading]=useState(true);
+const AuthProvider = ({ children }) => {
 
 
-    const [user,setUser]=useState(null)
+
+    const provider = new GoogleAuthProvider()
+    const [isLoading, setLoading] = useState(true);
 
 
-    const googleLogIn=()=>{
-        return signInWithPopup(auth,provider)   
-    } 
+    const [user, setUser] = useState(null)
 
-    const userRegister=(email,password)=>{
-        return createUserWithEmailAndPassword(auth,email,password)
+
+    const googleLogIn = () => {
+        return signInWithPopup(auth, provider)
     }
 
-    const userLogIn=(email,password)=>{
-        return signInWithEmailAndPassword(auth,email,password)
+    const userRegister = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    const userLogIn = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+    }
 
-    const signout=()=>{
+    const updateUser = (name, url) => {
+        return updateProfile(auth.currentUser, { displayName: name, photoURL: url });
+    }
+
+    const signout = () => {
         return signOut(auth)
     }
 
     useEffect(() => {
-        const unSubscribe= onAuthStateChanged(auth,(currentUser)=>{
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
             setLoading(false)
         })
@@ -44,7 +49,7 @@ const AuthProvider = ({children}) => {
         };
     }, []);
 
-    const authInformation={
+    const authInformation = {
         user,
         isLoading,
         googleLogIn,
@@ -52,7 +57,8 @@ const AuthProvider = ({children}) => {
         signout,
         setLoading,
         userRegister,
-        userLogIn
+        userLogIn,
+        updateUser
 
     }
 

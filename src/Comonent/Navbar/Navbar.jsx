@@ -57,7 +57,7 @@ const Navbar = () => {
                                     src={user.photoURL} />
                             </div>
                         </div>
-                        <div className={`${isHidden ? 'hidden':'block'} absolute top-15 right-5 p-3 rounded-xl`}>
+                        <div className={`${isHidden ? 'hidden':'block'} absolute top-15 right-5 p-3 rounded-xl z-10`}>
                             <p className='bg-gray-100 px-6 py-2 mb-3 rounded-md'>{user.displayName}</p>
 
                             <button onClick={() => {signout(); setHidden(true)} } className='bg-gray-100 px-6 py-2 rounded-md cursor-pointer'>

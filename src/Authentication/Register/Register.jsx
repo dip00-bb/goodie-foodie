@@ -8,7 +8,7 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
 
-  const { setUser, userRegister, googleLogIn } = use(AuthContext);
+  const { setUser, userRegister, googleLogIn, updateUser } = use(AuthContext);
 
   const validatePassword = (password) => {
     const hasUpper = /[A-Z]/.test(password);
@@ -26,6 +26,8 @@ const Register = () => {
     e.preventDefault()
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const userName = e.target.name.value;
+    const userPhotoURL = e.target.photo.value;
     const error = validatePassword(password);
 
     if (error) {
@@ -34,15 +36,21 @@ const Register = () => {
       setPasswordError('');
       userRegister(email, password)
         .then(result => {
-          setUser(result.user)
-          navigate('/')
-          toast.success("Register Successful")
+          const user = result.user;
+          updateUser(userName, userPhotoURL).then(() => {
+            setUser({ ...user, displayName: userName, photoURL: userPhotoURL });
+            toast("Registration Successful");
+            navigate('/')
+          })
         }).catch(error => {
           toast.warn(error.message)
         })
     }
 
   }
+  // setUser(result.user)
+  // navigate('/')
+  // toast.success("Register Successful")
 
   const handleGoogleLogin = () => {
     googleLogIn()
@@ -77,7 +85,7 @@ const Register = () => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Photo URL</label>
-            <input type="text" placeholder="Your photo URL"
+            <input type="text" placeholder="Your photo URL" name='photo'
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
           </div>
 

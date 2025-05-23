@@ -9,8 +9,8 @@ const AddRecipe = () => {
 
     const [checkedItem, setItem] = useState([])
     const [cuisineType, setCusine] = useState('Italian');
-    const {user}=use(AuthContext);
-    console.log("user user user",user.uid)
+    const { user } = use(AuthContext);
+    console.log("user user user", user.uid)
     const handleSubmitData = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,9 +19,9 @@ const AddRecipe = () => {
         const categories = { categories: checkedItem }
         Object.assign(data, categories)
         const cuisine = { cuisine: cuisineType }
-        const uid={UID:user.uid}
+        const uid = { UID: user.uid }
         Object.assign(data, cuisine);
-        Object.assign(data,uid);
+        Object.assign(data, uid);
         console.log(data)
 
         fetch(`http://localhost:2000/recipes`, {
@@ -33,11 +33,12 @@ const AddRecipe = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    toast.success("Recipe Added Successfully")
+                    toast.success("Recipe Added Successfully");
+                    form.reset()
                 }
-        })
+            })
 
-        
+
 
     }
 
@@ -142,7 +143,7 @@ const AddRecipe = () => {
                         <input
                             type="number"
                             name='likes'
-                            value="0"
+                            value={0}
                             readOnly
                             className="w-full border border-gray-200 bg-black/55 text-white px-4 py-2 rounded-lg cursor-not-allowed"
                         />

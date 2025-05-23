@@ -9,7 +9,7 @@ const Layout = () => {
             <header>
                 <Navbar />
             </header>
-            <main>
+            <main className='py-8'>
                 <Outlet />
             </main>
             <footer>

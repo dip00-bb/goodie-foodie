@@ -26,7 +26,7 @@ const RecipeDetails = () => {
     console.log("jjj", singleRecipe)
 
     return (
-        <div className="max-w-2xl mx-auto bg-[#efeae7] rounded-lg overflow-hidden py-5">
+        <div className="max-w-2xl mx-auto bg-[#efeae7] rounded-lg overflow-hidden py-5 p-8">
 
             <div className='relative px-6'>
                 <div className='w-[20rem] h-[20rem] rounded-full '>
