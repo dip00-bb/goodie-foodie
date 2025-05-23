@@ -19,8 +19,9 @@ const MyRecipes = () => {
     }, []);
 
 
+
     return (
-        <div className='grid grid-col-1 lg:grid-cols-2 gap-8 p-8'>
+        <div className='grid grid-col-1 lg:grid-cols-2 gap-8 p-8 '>
             {
                 recipes.map(recipe=><SingleMyRes key={recipe._id} recipe={recipe} setRecipes={setRecipes} recipes={recipes}/>)
             }

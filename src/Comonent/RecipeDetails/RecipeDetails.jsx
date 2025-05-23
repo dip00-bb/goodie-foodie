@@ -1,11 +1,30 @@
 import randomColor from 'randomcolor';
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../../Context/AuthContext';
 
 const RecipeDetails = () => {
+
     const singleRecipe = useLoaderData();
-    console.log("jjj",singleRecipe)
-    const { imageURL, title, ingredients, instruction,categories,cuisine,likes,prepTime} = singleRecipe
+    const { imageURL, title, ingredients, instruction, categories, cuisine, likes, prepTime, _id } = singleRecipe
+    const [totalLike, setLike] = useState(parseInt(likes));
+    console.log("total like",totalLike)
+    // const { user } = use(AuthContext);
+
+    const handleLike = () => {
+        setLike(totalLike + 1)
+        fetch(`http://localhost:2000/recipes/${_id}`, {
+            method: "PATCH",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({totalLike})
+        }).then(res => res.json())
+            .then(data => console.log("like data", data))
+    }
+
+    console.log("jjj", singleRecipe)
+
     return (
         <div className="max-w-2xl mx-auto bg-[#efeae7] rounded-lg overflow-hidden py-5">
 
@@ -45,14 +64,14 @@ const RecipeDetails = () => {
 
                     <div className="flex justify-between text-sm text-gray-600">
                         <span className='text-xl font-semibold'>⏱️ Prep Time: {prepTime} mins</span>
-                        <span className='text-xl font-semibold cursor-pointer'>❤️ Likes:{likes}</span>
+                        <span className='text-xl font-semibold cursor-pointer'><span onClick={handleLike}>❤️</span> Likes:{totalLike}</span>
                     </div>
 
                     <div className="mt-4">
                         <h4 className="text-sm font-semibold mb-1">Categories:</h4>
                         <div className="flex flex-wrap gap-2">
                             {
-                                categories.map(category=><span style={{background:randomColor({luminosity: 'light',format: 'hsla'})}} className={`px-2 py-1 rounded-sm font-light`} >{category}</span>)
+                                categories.map(category => <span style={{ background: randomColor({ luminosity: 'light', format: 'hsla' }) }} className={`px-2 py-1 rounded-sm font-light`} >{category}</span>)
                             }
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import AllRecipes from "../Comonent/AllRecipes/AllRecipes";
 import Loader from "../Loader/Loader";
 import RecipeDetails from "../Comonent/RecipeDetails/RecipeDetails";
 import MyRecipes from "../Comonent/MyRecipes/MyRecipes";
+import Banner from "../Comonent/Banner/Banner";
 
 
 export const router=createBrowserRouter([
@@ -17,6 +18,10 @@ export const router=createBrowserRouter([
         path:'/',
         Component:Layout,
         children:[
+            {
+                path:'/',
+                Component:Banner
+            },
             {
                 path:'/login',
                 Component:Login
