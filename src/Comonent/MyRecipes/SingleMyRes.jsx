@@ -46,7 +46,7 @@ const SingleMyRes = ({ recipe, setRecipes, recipes }) => {
 
     return (
         <>
-            <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 lg:min-w-md lg:max-w-md mx-auto relative">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto relative">
                 <img src={imageURL} alt={title} className="w-full h-48 object-cover" />
                 <div className="p-5 space-y-2">
                     <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
@@ -68,7 +68,7 @@ const SingleMyRes = ({ recipe, setRecipes, recipes }) => {
                 </div>
             </div>
 
-            <div className={`${hidden ? 'hidden' : 'block'} absolute z-10 top-48 left-[38%]`}>
+            <div className={`${hidden ? 'hidden' : 'block'} absolute z-10 top-[50vh] left-[10%]`}>
                 <UpdateModal recipe={recipe} recipes={recipes} setRecipes={setRecipes} setHidden={setHidden}/>
             </div>
         </>

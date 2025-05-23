@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { FaCross } from 'react-icons/fa';
+import { FaDeleteLeft } from 'react-icons/fa6';
+import { TiDeleteOutline } from 'react-icons/ti';
 // import { toast } from 'react-toastify';
 
-const UpdateModal = ({ recipe, recipes, setRecipes,setHidden }) => {
+const UpdateModal = ({ recipe, recipes, setRecipes, setHidden }) => {
     const { _id, imageURL, title, ingredients, instruction, prepTime, categories, cuisine } = recipe;
     // console.log(categories)
 
@@ -27,17 +30,17 @@ const UpdateModal = ({ recipe, recipes, setRecipes,setHidden }) => {
             body: JSON.stringify(data)
         }).then(res => res.json())
             .then(result => {
-                console.log("after after",result)
+                console.log("after after", result)
                 console.log(result.modifiedCount)
                 if (result.modifiedCount) {
-                    const notFilteredRecipes = recipes.filter(recipe=>recipe._id !== id);
-                    Object.assign(data,{_id:id})
+                    const notFilteredRecipes = recipes.filter(recipe => recipe._id !== id);
+                    Object.assign(data, { _id: id })
                     setRecipes([...notFilteredRecipes, data])
                     console.log("after update", data);
-                    console.log("vvvvvvvvvvv",notFilteredRecipes)
+                    console.log("vvvvvvvvvvv", notFilteredRecipes)
                     setHidden(true);
-                    
-                    
+
+
                 }
 
             })
@@ -60,38 +63,41 @@ const UpdateModal = ({ recipe, recipes, setRecipes,setHidden }) => {
         setCusine(value)
     }
     return (
-        <div className="rounded-3xl p-8 border-0 bg-black/80">
+        <div className="p-8 border-0 bg-black/80 w-[80vw]">
+            <div><TiDeleteOutline fill='red' size={25} className='cursor-pointer' onClick={()=>setHidden(true)}/></div>
             <h2 className="text-4xl font-extrabold text-yellow-500 text-center mb-8">
                 🍽️ Update Your Recipe
             </h2>
 
-            <form onSubmit={(e) => handleSubmitData(e, _id)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={(e) => handleSubmitData(e, _id)} className="">
 
-                <div className="col-span-1 md:col-span-2">
-                    <label className="block mb-2 text-sm font-medium text-white">Image URL</label>
-                    <input
-                        type="text"
-                        name='imageURL'
-                        defaultValue={imageURL}
-                        placeholder="Paste image URL here"
-                        className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
-                    />
+                <div className='flex justify-between w-full gap-2.5 mb-2'>
+                    <div className="flex-1">
+                        <label className="block mb-2 text-sm font-medium text-white ">Image URL</label>
+                        <input
+                            type="text"
+                            name='imageURL'
+                            defaultValue={imageURL}
+                            placeholder="Paste image URL here"
+                            className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+                        />
+                    </div>
+
+
+                    <div className='flex-1'>
+                        <label className="block mb-2 text-sm font-medium text-white flex-1">Title</label>
+                        <input
+                            type="text"
+                            name='title'
+                            defaultValue={title}
+                            placeholder="Delicious Pasta"
+                            className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+                        />
+                    </div>
                 </div>
 
 
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-white">Title</label>
-                    <input
-                        type="text"
-                        name='title'
-                        defaultValue={title}
-                        placeholder="Delicious Pasta"
-                        className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
-                    />
-                </div>
-
-
-                <div>
+                <div className='mb-2'>
                     <label className="block mb-2 text-sm font-medium text-white">Cuisine Type</label>
                     <select onChange={handleCusine} defaultValue={cuisine} className="w-full border bg-black/55 border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none">
                         <option>Italian</option>
@@ -103,53 +109,58 @@ const UpdateModal = ({ recipe, recipes, setRecipes,setHidden }) => {
                 </div>
 
 
-                <div className="col-span-1 md:col-span-2">
-                    <label className="block mb-2 text-sm font-medium text-white">Ingredients</label>
-                    <textarea
-                        rows="3"
-                        name='ingredients'
-                        defaultValue={ingredients}
-                        placeholder="E.g. 2 cups of flour, 1/2 tsp salt..."
-                        className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
-                    />
-                </div>
-                <div className="col-span-1 md:col-span-2">
-                    <label className="block mb-2 text-sm font-medium text-white">Instructions</label>
-                    <textarea
-                        rows="4"
-                        name='instruction'
-                        defaultValue={instruction}
-                        placeholder="Step-by-step preparation..."
-                        className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
-                    />
-                </div>
-
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-white">Prep Time (minutes)</label>
-                    <input
-
-                        type="number"
-                        placeholder="30"
-                        defaultValue={prepTime}
-                        name='prepTime'
-                        min="1"
-                        className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
-                    />
+                <div className='flex justify-between w-full gap-2.5 mb-2'>
+                    <div className="flex-1">
+                        <label className="block mb-2 text-sm font-medium text-white">Ingredients</label>
+                        <textarea
+                            rows="3"
+                            name='ingredients'
+                            defaultValue={ingredients}
+                            placeholder="E.g. 2 cups of flour, 1/2 tsp salt..."
+                            className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+                        />
+                    </div>
+                    <div className="flex-1">
+                        <label className="block mb-2 text-sm font-medium text-white">Instructions</label>
+                        <textarea
+                            rows="4"
+                            name='instruction'
+                            defaultValue={instruction}
+                            placeholder="Step-by-step preparation..."
+                            className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+                        />
+                    </div>
                 </div>
 
+                <div className='flex justify-between gap-2.5 mb-2'>
 
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-white">Like Count</label>
-                    <input
-                        type="number"
-                        name='likes'
-                        value="0"
-                        readOnly
-                        className="w-full border border-gray-200 bg-black/55 text-white px-4 py-2 rounded-lg cursor-not-allowed"
-                    />
+                    <div className='flex-1' >
+                        <label className="block mb-2 text-sm font-medium text-white">Prep Time (minutes)</label>
+                        <input
+
+                            type="number"
+                            placeholder="30"
+                            defaultValue={prepTime}
+                            name='prepTime'
+                            min="1"
+                            className="w-full border border-white text-white px-4 py-2 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+                        />
+                    </div>
+
+
+                    <div className='flex-1'>
+                        <label className="block mb-2 text-sm font-medium text-white">Like Count</label>
+                        <input
+                            type="number"
+                            name='likes'
+                            value="0"
+                            readOnly
+                            className="w-full border border-gray-200 bg-black/55 text-white px-4 py-2 rounded-lg cursor-not-allowed"
+                        />
+                    </div>
                 </div>
 
-                <div className="col-span-1 md:col-span-2">
+                <div className='mb-2'>
                     <label className="block mb-2 text-sm font-medium text-white">Categories</label>
                     <div className="flex flex-wrap gap-2 items-center">
                         {
