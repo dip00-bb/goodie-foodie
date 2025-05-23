@@ -1,17 +1,45 @@
 
-import { useLoaderData } from 'react-router';
 import RecipeCard from './RecipeCard';
-
+import { useEffect, useState } from 'react';
 
 const AllRecipes = () => {
-    const allRecipes = useLoaderData();
+    const [allRecipes, setAllRecipes] = useState([]);
+    const [filteredRecipes, setFilteredRecipes] = useState([]);
 
+    useEffect(() => {
+        fetch('http://localhost:2000/recipes')
+            .then(res => res.json())
+            .then(data => {
+                setAllRecipes(data);
+                setFilteredRecipes(data);
+            })
+            .catch(error => console.error(error.message));
+    }, []);
+
+    const filterByCuisine = (cuisine) => {
+        if (cuisine === "All") return setFilteredRecipes(allRecipes);
+        const filtered = allRecipes.filter(recipe => recipe.cuisine === cuisine);
+        setFilteredRecipes(filtered);
+    };
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-8 '>
-            {
-                allRecipes.map(recipe => <RecipeCard recipe={recipe} />)
-            }
+        <div className='p-8'>
+            <div className="dropdown mb-4">
+                <div tabIndex={0} role="button" className="btn m-1">Click</div>
+                <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <button onClick={() => filterByCuisine("All")}>Sort by</button>
+                    <button onClick={() => filterByCuisine("Mexican")}>Mexican</button>
+                    <button onClick={() => filterByCuisine("Indian")}>Indian</button>
+                    <button onClick={() => filterByCuisine("Chinese")}>Chinese</button>
+                </ul>
+            </div>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+                {
+                    filteredRecipes.map(recipe => (
+                        <RecipeCard key={recipe.id} recipe={recipe} />
+                    ))
+                }
+            </div>
         </div>
     );
 };

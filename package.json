@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
+    "aos": "^2.3.4",
     "daisyui": "^5.0.35",
     "firebase": "^11.7.3",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.511.0",
     "randomcolor": "^0.6.2",
     "react": "^19.1.0",

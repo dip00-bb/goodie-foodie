@@ -36,7 +36,6 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/allrecipes',
-                loader:()=>fetch('http://localhost:2000/recipes'),
                 Component:AllRecipes,
                 hydrateFallbackElement:<Loader></Loader>
             },
