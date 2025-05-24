@@ -1,10 +1,13 @@
 
 import RecipeCard from './RecipeCard';
 import { useEffect, useState } from 'react';
+import NoRecipe from '../../NoRecipie/NoRecipe';
+import Loader from '../../Loader/Loader';
 
 const AllRecipes = () => {
     const [allRecipes, setAllRecipes] = useState([]);
     const [filteredRecipes, setFilteredRecipes] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://recipebook-pearl.vercel.app/recipes')
@@ -12,8 +15,12 @@ const AllRecipes = () => {
             .then(data => {
                 setAllRecipes(data);
                 setFilteredRecipes(data);
+                setLoading(false);
             })
-            .catch(error => console.error(error.message));
+            .catch(error => {
+                console.error(error.message);
+                setLoading(false);
+            });
     }, []);
 
     const filterByCuisine = (cuisine) => {
@@ -34,13 +41,21 @@ const AllRecipes = () => {
                     <button onClick={() => filterByCuisine("Chinese")}>Chinese</button>
                 </ul>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-                {
-                    filteredRecipes.map(recipe => (
-                        <RecipeCard key={recipe.id} recipe={recipe} />
-                    ))
-                }
-            </div>
+
+            {loading ? (
+                <Loader />
+            ) : filteredRecipes.length === 0 ? ( 
+                <NoRecipe />
+            ) : (
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+                    {
+                        filteredRecipes.map(recipe => (
+                            
+                            <RecipeCard key={recipe.id} recipe={recipe} />
+                        ))
+                    }
+                </div>
+            )}
         </div>
     );
 };

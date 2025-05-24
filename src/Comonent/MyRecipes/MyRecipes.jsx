@@ -3,6 +3,7 @@ import React, { useState, useEffect, use } from 'react';
 import SingleMyRes from './SingleMyRes';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import NoRecipe from '../../NoRecipie/NoRecipe';
 
 const MyRecipes = () => {
     const [recipes,setRecipes]=useState([]);
@@ -23,7 +24,7 @@ const MyRecipes = () => {
     return (
         <div className='grid grid-col-1 lg:grid-cols-4 gap-8 p-8 '>
             {
-                recipes.map(recipe=><SingleMyRes key={recipe._id} recipe={recipe} setRecipes={setRecipes} recipes={recipes} />)
+               recipes.length>0 ? recipes.map(recipe=><SingleMyRes key={recipe._id} recipe={recipe} setRecipes={setRecipes} recipes={recipes} />) : <NoRecipe/>
             }
 
         </div>
