@@ -8,47 +8,47 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    console.log("state in login",location.state)
 
-    const { googleLogIn, setUser,userLogIn } = use(AuthContext);
+
+    const { googleLogIn, setUser, userLogIn } = use(AuthContext);
 
     const handleSignInWithGoogle = () => {
         googleLogIn()
             .then(result => {
                 setUser(result.user);
-                console.log(result.user);
                 navigate(`${location.state ? location.state : '/'}`)
                 toast.success("Login Successful")
-                
+
             })
             .catch(error => toast.warn(error.message))
     }
 
-    const handleUserLogin=(e)=>{
+    const handleUserLogin = (e) => {
         e.preventDefault()
-        const email=e.target.email.value;
-        const password=e.target.password.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
 
-        userLogIn(email,password)
-        .then(result=>{
-            setUser(result.user);
-            toast.success("Log in successful");
-        }).catch(error=>toast.error(error.message))
+        userLogIn(email, password)
+            .then(result => {
+                setUser(result.user);
+                toast.success("Log in successful");
+                navigate(`${location.state ? location.state : '/'}`)
+            }).catch(error => toast.error(error.message))
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-green-50 p-4">
             <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-                <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
+                <h2 className="text-3xl font-bold text-center mb-6 text-green-700">Login</h2>
 
                 <form onSubmit={handleUserLogin} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <label className="block text-sm font-medium text-gray-700 dark:text-black">Email</label>
                         <input
                             type="email"
                             name='email'
                             placeholder="Enter your email"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                             required
                         />
                     </div>
@@ -59,13 +59,13 @@ const Login = () => {
                             type="password"
                             name='password'
                             placeholder="Enter your password"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                             required
                         />
                     </div>
 
                     <div className="flex justify-between text-sm">
-                        <Link to='/register' className="text-blue-500 hover:underline">Forgot Password?</Link>
+                        <p className="text-green-600 hover:underline">Forgot Password?</p>
                     </div>
 
                     <button
@@ -77,7 +77,7 @@ const Login = () => {
                 </form>
 
                 <div className="my-6 text-center">
-                    <p className="text-gray-600 text-sm">Don't have an account? <a href="/register" className="text-blue-500 hover:underline">Register</a></p>
+                    <p className="text-gray-600 text-sm">Don't have an account? <a href="/register" className="hover:underline text-green-500">Register</a></p>
                 </div>
 
                 <div className="relative">
@@ -93,7 +93,7 @@ const Login = () => {
                     className="mt-4 w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition"
                 >
                     <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                    <span>Login with Google</span>
+                    <span className='text-black cursor-pointer'>Login with Google</span>
                 </button>
             </div>
         </div>

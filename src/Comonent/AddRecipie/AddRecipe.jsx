@@ -10,7 +10,6 @@ const AddRecipe = () => {
     const [checkedItem, setItem] = useState([])
     const [cuisineType, setCusine] = useState('Italian');
     const { user } = use(AuthContext);
-    console.log("user user user", user.uid)
     const handleSubmitData = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -22,9 +21,9 @@ const AddRecipe = () => {
         const uid = { UID: user.uid }
         Object.assign(data, cuisine);
         Object.assign(data, uid);
-        console.log(data)
 
-        fetch(`http://localhost:2000/recipes`, {
+
+        fetch(`https://recipebook-pearl.vercel.app/recipes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -58,10 +57,7 @@ const AddRecipe = () => {
         const value = e.target.value;
         setCusine(value)
     }
-    // useEffect(() => {
-    //     console.log(checkedItem);
-    //     console.log(cuisineType)
-    // }, [checkedItem, cuisineType])
+
 
     return (
         <div style={{ backgroundImage: `url('./recipe_full.jpg')` }} className="min-h-screen flex items-center justify-center px-4 py-10">

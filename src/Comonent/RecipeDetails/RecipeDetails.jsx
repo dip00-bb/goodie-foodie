@@ -1,33 +1,50 @@
 import randomColor from 'randomcolor';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
 const RecipeDetails = () => {
 
     const singleRecipe = useLoaderData();
-    const { imageURL, title, ingredients, instruction, categories, cuisine, likes, prepTime, _id } = singleRecipe
+    const { imageURL, title, ingredients, instruction, categories, cuisine, likes, prepTime, _id, UID } = singleRecipe
     const [totalLike, setLike] = useState(parseInt(likes));
-    console.log("total like",totalLike)
-    // const { user } = use(AuthContext);
+    const [isHidden, setHidden] = useState('block')
+    const { user } = use(AuthContext);
+    const uid = user.uid
+    // console.log(UID)
+    const handleLike = (x, y) => {
 
-    const handleLike = () => {
-        setLike(totalLike + 1)
-        fetch(`http://localhost:2000/recipes/${_id}`, {
-            method: "PATCH",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({totalLike})
-        }).then(res => res.json())
-            .then(data => console.log("like data", data))
-    }
+        if (x === y) {
+            return
+        } else {
+            setLike(totalLike + 1);
 
-    console.log("jjj", singleRecipe)
+            fetch(`https://recipebook-pearl.vercel.app/recipes/${_id}`, {
+                method: "PATCH",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ totalLike, uid })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount) {
+                        setHidden('block');
+                    } else {
+                        setLike(totalLike); // silently revert like count if ignored
+                    }
+                });
+        }
+
+    };
+
+
 
     return (
         <div className="max-w-2xl mx-auto bg-[#efeae7] rounded-lg overflow-hidden py-5 p-8">
-
+            {
+                <p className={`${isHidden} text-3xl text-yellow-600 mb-5 text-center font-semibold`}>{totalLike} people interested in this recipe</p>
+            }
             <div className='relative px-6'>
                 <div className='w-[20rem] h-[20rem] rounded-full '>
                     <img
@@ -64,14 +81,14 @@ const RecipeDetails = () => {
 
                     <div className="flex justify-between text-sm text-gray-600">
                         <span className='text-xl font-semibold'>⏱️ Prep Time: {prepTime} mins</span>
-                        <span className='text-xl font-semibold cursor-pointer'><span onClick={handleLike}>❤️</span> Likes:{totalLike}</span>
+                        <span className='text-xl font-semibold cursor-pointer'><span onClick={()=>handleLike(uid,UID)}>❤️</span> Likes:{totalLike}</span>
                     </div>
 
                     <div className="mt-4">
                         <h4 className="text-sm font-semibold mb-1">Categories:</h4>
                         <div className="flex flex-wrap gap-2">
                             {
-                                categories.map(category => <span style={{ background: randomColor({ luminosity: 'light', format: 'hsla' }) }} className={`px-2 py-1 rounded-sm font-light`} >{category}</span>)
+                                categories.map(category => <span style={{ background: randomColor({ luminosity: 'light', format: 'hsla' }) }} className={`px-2 py-1 rounded-sm font-light text-black`} >{category}</span>)
                             }
                         </div>
                     </div>

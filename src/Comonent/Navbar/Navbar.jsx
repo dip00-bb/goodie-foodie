@@ -1,11 +1,11 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 
 const Navbar = () => {
 
     const { user, signout } = use(AuthContext);
-    const [isHidden,setHidden]=useState(true)
+    const [isHidden, setHidden] = useState(true)
 
     const link = <>
         <li><NavLink className='text-xl font-medium' to='/'>Home</NavLink></li>
@@ -13,9 +13,18 @@ const Navbar = () => {
         <li><NavLink className='text-xl font-medium' to='/addrecipes'>Add Recipes</NavLink></li>
         <li><NavLink className='text-xl font-medium' to='/Myrecipes'>My Recipes</NavLink></li>
     </>
+    const [theme, setTheme] = useState("light");
 
+    // Sync theme with document
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
 
-    const noUsers = <div className="navbar-end flex gap-5"><Link className='btn' to='/register'>Register</Link><Link className='btn' to='/login'>Login</Link></div>
+    const toggleTheme = () => {
+        setTheme(prev => (prev === "light" ? "dark" : "light"));
+    };
+
+    const noUsers = <div className="navbar-end flex gap-5"><Link className='btn hidden lg:flex' to='/register'>Register</Link><Link className='btn hidden lg:flex' to='/login'>Login</Link></div>
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -30,7 +39,8 @@ const Navbar = () => {
                         {
                             link
                         }
-
+                        {/* <Link className='btn md:flex text-center my-2' to='/register'>Register</Link>
+                        <Link className='btn md:flex ' to='/login'>Login</Link> */}
                     </ul>
                 </div>
                 <Link to='/' className="text-3xl font-bold text-yellow-400">GOODIE FOODIE</Link>
@@ -40,6 +50,8 @@ const Navbar = () => {
                     {
                         link
                     }
+
+
                 </ul>
             </div>
 
@@ -51,16 +63,16 @@ const Navbar = () => {
                 {
                     user ? <div className='flex gap-5'>
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div onClick={()=>setHidden(!isHidden)} className="w-10 rounded-full relative">
+                            <div onClick={() => setHidden(!isHidden)} className="w-10 rounded-full relative">
                                 <img
                                     alt='not provide'
                                     src={user.photoURL} />
                             </div>
                         </div>
-                        <div className={`${isHidden ? 'hidden':'block'} absolute top-15 right-5 p-3 rounded-xl z-10`}>
-                            <p className='bg-gray-100 px-6 py-2 mb-3 rounded-md'>{user.displayName}</p>
+                        <div className={`${isHidden ? 'hidden' : 'block'} absolute top-15 right-5 p-3 rounded-xl z-10`}>
+                            <p className='bg-gray-100 px-6 py-2 mb-3 rounded-md dark:text-black'>{user.displayName}</p>
 
-                            <button onClick={() => {signout(); setHidden(true)} } className='bg-gray-100 px-6 py-2 rounded-md cursor-pointer'>
+                            <button onClick={() => { signout(); setHidden(true) }} className='bg-gray-100 px-6 py-2 rounded-md cursor-pointer dark:text-black'>
                                 Logout
                             </button>
                         </div>
@@ -69,9 +81,9 @@ const Navbar = () => {
 
                 }
 
-                {
-                    user && console.log(user.photoURL)
-                }
+                <button className="ml-5" onClick={toggleTheme}>
+                    {theme === "light" ? "🌙" : "☀️"}
+                </button>
             </div>
 
         </div>

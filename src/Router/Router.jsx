@@ -12,49 +12,49 @@ import MyRecipes from "../Comonent/MyRecipes/MyRecipes";
 import HomePage from "../Pages/HomePage";
 
 
-export const router=createBrowserRouter([
+export const router = createBrowserRouter([
 
     {
-        path:'/',
-        Component:Layout,
-        children:[
+        path: '/',
+        Component: Layout,
+        children: [
             {
-                path:'/',
-                Component:HomePage
+                path: '/',
+                Component: HomePage
             },
             {
-                path:'/login',
-                Component:Login
+                path: '/login',
+                Component: Login
             },
             {
-                path:'/register',
-                Component:Register
+                path: '/register',
+                Component: Register
             },
             {
-                path:'/addrecipes',
-                element:<PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
+                path: '/addrecipes',
+                element: <PrivateRoute><AddRecipe></AddRecipe></PrivateRoute>
             },
             {
-                path:'/allrecipes',
-                Component:AllRecipes,
-                hydrateFallbackElement:<Loader></Loader>
+                path: '/allrecipes',
+                Component: AllRecipes,
+                hydrateFallbackElement: <Loader></Loader>
             },
             {
-                path:'/allrecipes/:id',
-                loader:({params})=>fetch(`http://localhost:2000/recipes/${params.id}`),
-                element:<PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>
+                path: '/allrecipes/:id',
+                loader: ({ params }) => fetch(`https://recipebook-pearl.vercel.app/recipes/${params.id}`),
+                element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>
             },
             {
-                path:'/myrecipes',
-                element:<PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
+                path: '/myrecipes',
+                element: <PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
             },
         ]
 
 
     },
     {
-        path:'*',
-        Component:ErrorPage
+        path: '*',
+        Component: ErrorPage
     }
 
 ])

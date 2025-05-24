@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import UpdateModal from '../UpdateModal/UpdateModal';
 
+
+
+
 const SingleMyRes = ({ recipe, setRecipes, recipes }) => {
     const { _id, imageURL, title, ingredients, instruction, prepTime, likes, categories, cuisine } = recipe;
 
 
     const [hidden, setHidden] = useState(true);
-    console.log("hidden hidden",hidden)
+
     const handleDeleteRecipe = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -19,12 +22,11 @@ const SingleMyRes = ({ recipe, setRecipes, recipes }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:2000/recipes/${id}`, {
+                fetch(`https://recipebook-pearl.vercel.app/recipes/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         if (data.acknowledged) {
                             const remainingRecipes = recipes.filter(rec => rec._id !== id);
                             setRecipes(remainingRecipes)

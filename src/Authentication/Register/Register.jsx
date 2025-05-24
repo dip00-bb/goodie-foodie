@@ -1,5 +1,5 @@
 import React, { use, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
 
@@ -7,7 +7,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
-
+  const location = useLocation();
   const { setUser, userRegister, googleLogIn, updateUser } = use(AuthContext);
 
   const validatePassword = (password) => {
@@ -39,8 +39,9 @@ const Register = () => {
           const user = result.user;
           updateUser(userName, userPhotoURL).then(() => {
             setUser({ ...user, displayName: userName, photoURL: userPhotoURL });
+            navigate(`${location.state ? location.state : '/'}`)
             toast("Registration Successful");
-            navigate('/')
+            
           })
         }).catch(error => {
           toast.warn(error.message)
@@ -56,9 +57,9 @@ const Register = () => {
     googleLogIn()
       .then(result => {
         setUser(result.user);
-        console.log(result.user);
-        navigate('/')
         toast.success("Register Successful")
+        navigate('/')
+        
 
       })
       .catch(error => toast.warn(error.message))
@@ -74,19 +75,19 @@ const Register = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input type="text" required placeholder="Your name" name='name'
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 text-black" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input type="email" required placeholder="Your email" name='email'
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 text-black" />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700">Photo URL</label>
             <input type="text" placeholder="Your photo URL" name='photo'
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500" />
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 text-black" />
           </div>
 
           <div>
@@ -96,7 +97,7 @@ const Register = () => {
               required
               placeholder="Create a password"
               name='password'
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -132,7 +133,7 @@ const Register = () => {
           className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-green-50 transition"
         >
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-          <span>Continue with Google</span>
+          <span className='text-black'>Continue with Google</span>
         </button>
       </div>
     </div>

@@ -12,25 +12,26 @@ const CardLoader = () => {
 
 
     useEffect(() => {
-        console.log(limit)
-        fetch(`http://localhost:2000/homerecipe/${limit}`)
+
+        fetch(`https://recipebook-pearl.vercel.app/homerecipe/${limit}`)
             .then(res => res.json())
             .then(data => setHomeRec(data))
             .catch(error => toast.warn(error.message))
     }, [limit])
 
-    console.log("home home home", homeRec)
+
 
     return (
         <div className='p-8'>
+            <p className='text-center my-6 text-3xl font-bold text-yellow-400'>Top Recipes</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-4'>
                 {
                     homeRec.map(recipe =>
 
 
                     (
-
-                        <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl">
+                        
+                        <div key={recipe._id} className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl">
                             <div className="h-48 w-full bg-gray-200 flex items-center justify-center overflow-hidden">
                                 {recipe.imageURL ? (
                                     <img src={recipe.imageURL} alt={recipe.title} className="object-cover w-full h-full" />

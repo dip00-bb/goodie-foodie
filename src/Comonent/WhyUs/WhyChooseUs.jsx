@@ -11,10 +11,10 @@ export default function CookingLottieSection() {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
+    <div className="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center justify-center">
       <div>
-        <h2 className="text-4xl font-bold mb-4">Why Choose Our Recipes?</h2>
-        <ul className="space-y-3 text-gray-700 text-base list-disc pl-5">
+        <h2 className="text-4xl font-bold mb-4 text-yellow-400">Why Choose Our Recipes?</h2>
+        <ul className="space-y-3 text-gray-500 text-base list-disc pl-5">
           <li>Tested by experienced home chefs</li>
           <li>Easy-to-follow instructions</li>
           <li>Quick filters for diet and cuisine</li>

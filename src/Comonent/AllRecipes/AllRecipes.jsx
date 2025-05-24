@@ -7,7 +7,7 @@ const AllRecipes = () => {
     const [filteredRecipes, setFilteredRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:2000/recipes')
+        fetch('https://recipebook-pearl.vercel.app/recipes')
             .then(res => res.json())
             .then(data => {
                 setAllRecipes(data);
@@ -25,11 +25,12 @@ const AllRecipes = () => {
     return (
         <div className='p-8'>
             <div className="dropdown mb-4">
-                <div tabIndex={0} role="button" className="btn m-1">Click</div>
+                <div tabIndex={0} role="button" className="btn m-1">Filter</div>
                 <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <button onClick={() => filterByCuisine("All")}>Sort by</button>
+                    <button onClick={() => filterByCuisine("All")}>All</button>
                     <button onClick={() => filterByCuisine("Mexican")}>Mexican</button>
                     <button onClick={() => filterByCuisine("Indian")}>Indian</button>
+                    <button onClick={() => filterByCuisine("Italian")}>Italian</button>
                     <button onClick={() => filterByCuisine("Chinese")}>Chinese</button>
                 </ul>
             </div>

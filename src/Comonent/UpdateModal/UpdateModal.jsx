@@ -6,7 +6,7 @@ import { TiDeleteOutline } from 'react-icons/ti';
 
 const UpdateModal = ({ recipe, recipes, setRecipes, setHidden }) => {
     const { _id, imageURL, title, ingredients, instruction, prepTime, categories, cuisine } = recipe;
-    // console.log(categories)
+
 
     const [checkedItem, setItem] = useState(categories)
     const [cuisineType, setCusine] = useState('Italian');
@@ -20,9 +20,9 @@ const UpdateModal = ({ recipe, recipes, setRecipes, setHidden }) => {
         Object.assign(data, categories)
         const cuisine = { cuisine: cuisineType }
         Object.assign(data, cuisine)
-        console.log(data)
 
-        fetch(`http://localhost:2000/recipes/${id}`, {
+
+        fetch(`https://recipebook-pearl.vercel.app/recipes/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -30,14 +30,12 @@ const UpdateModal = ({ recipe, recipes, setRecipes, setHidden }) => {
             body: JSON.stringify(data)
         }).then(res => res.json())
             .then(result => {
-                console.log("after after", result)
-                console.log(result.modifiedCount)
+
                 if (result.modifiedCount) {
                     const notFilteredRecipes = recipes.filter(recipe => recipe._id !== id);
                     Object.assign(data, { _id: id })
                     setRecipes([...notFilteredRecipes, data])
-                    console.log("after update", data);
-                    console.log("vvvvvvvvvvv", notFilteredRecipes)
+
                     setHidden(true);
 
 
