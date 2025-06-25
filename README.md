@@ -1,17 +1,70 @@
-# GOODIE FOODIE 
-GOODIE FOODIE is a recipe book website where people from anywhere in the world share the making process of food and uses ingredients.This website make easier to cook a delicious dish for your friend and family easily.
+# 🍲 GOODIE FOODIE – Recipe Book Platform
 
-# LIVE LINK
-https://recipe-book-ddad9.web.app/ 
+**Live Preview** 🌐  
+🔗 [https://recipe-book-ddad9.web.app/](https://recipe-book-ddad9.web.app/)
 
-# OUR UNIQUE FEATURE
+---
 
-1. Our website provide a easy authentication with google and email password in secure way
+## 📸 Screenshots  
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/cea69d7c-473a-40f0-8a2c-0471ce060bd6" width="400"/>
+  <img src="https://github.com/user-attachments/assets/85a5147c-63ed-43d0-a653-4aa511671078" width="400"/>
+  <img src="https://github.com/user-attachments/assets/f6373fc9-5d03-4c83-aeac-c939ac19e601" width="400"/>
+</div>
 
-2. User can like others recipes .
+---
 
-3. Top liked recipe will suggest on your home page
+## 📝 Description  
 
-4. It is fully responsive to any devices so that user can easily access our website .
+**GOODIE FOODIE** is a global recipe-sharing platform where people from all over the world can share how they cook their favorite dishes and what ingredients they use. This website makes it easier for anyone to prepare a **delicious meal** for friends and family by following tried and tested recipes from real people.
 
-5. From my recipe section user can easily delete and update their uploaded recipe.
+---
+
+## 🚀 Tech Stack  
+
+- ⚛️ React  
+- 💨 Tailwind CSS  
+- 🌼 DaisyUI  
+- 🔁 React Router DOM  
+- 🔥 Firebase Authentication (Google + Email/Password)  
+- 📦 Axios  
+- 🎞️ Framer Motion  
+- 🔔 React Toastify  
+- ⚠️ SweetAlert2  
+- 🎠 Swiper.js  
+- 🎬 Lottie-react  
+- 📊 Recharts  
+- 🎨 React Icons  
+
+---
+
+## 💡 Key Features  
+
+1. 🔐 Easy and secure authentication using **Google** or **Email/Password**  
+2. 👍 Users can **like** other users' recipes  
+3. 🏆 **Top liked recipes** are suggested on the home page  
+4. 📱 Fully **responsive design** for all devices  
+5. ✍️ From **My Recipes**, users can **edit** or **delete** their uploaded recipes  
+
+---
+
+## 🧭 Pages & Routes  
+
+| Route              | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| `/`                | 🏠 Home – Landing page showing top liked recipes                            |
+| `/allrecipes`      | 📚 All Recipes – Browse all shared recipes from users                       |
+| `/addrecipes`      | ➕ Add Recipe (Private) – Authenticated users can upload a new recipe        |
+| `/myrecipes`       | 👨‍🍳 My Recipes (Private) – Manage your own recipes (edit & delete)         |
+| `/login` / `/register` | 🔐 Auth Pages – Secure login and registration via Firebase               |
+
+---
+
+## 🙌 Thank You
+
+Thank you for visiting **GOODIE FOODIE**!  
+We hope this platform helps you discover and cook amazing dishes.  
+Feel free to explore, like, and share your own recipes with the world! 🌍❤️🍴
+
+---
+
