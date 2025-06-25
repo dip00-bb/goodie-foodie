@@ -66,7 +66,7 @@
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/dip00-bb/Dev-Blog.git
+   git clone https://github.com/dip00-bb/goodie-foodie.git
    cd Dev-Blog
    
 2. **Install Dependencies**
