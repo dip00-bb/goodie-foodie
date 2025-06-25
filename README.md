@@ -1,12 +1,17 @@
-# React + Vite
+# GOODIE FOODIE 
+GOODIE FOODIE is a recipe book website where people from anywhere in the world share the making process of food and uses ingredients.This website make easier to cook a delicious dish for your friend and family easily.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# LIVE LINK
+https://recipe-book-ddad9.web.app/ 
 
-Currently, two official plugins are available:
+# OUR UNIQUE FEATURE
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Our website provide a easy authentication with google and email password in secure way
 
-## Expanding the ESLint configuration
+2. User can like others recipes .
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Top liked recipe will suggest on your home page
+
+4. It is fully responsive to any devices so that user can easily access our website .
+
+5. From my recipe section user can easily delete and update their uploaded recipe.
