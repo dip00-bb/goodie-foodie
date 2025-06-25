@@ -60,6 +60,31 @@
 
 ---
 
+
+
+## 🛠️ Local Setup Instructions  
+
+1. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/dip00-bb/Dev-Blog.git
+   cd Dev-Blog
+   
+2. **Install Dependencies**
+   ```bash
+   npm install
+
+3. **Start Development Server**
+   ```
+   npm run dev
+
+4. **Visit the App**
+
+  Open your browser and go to 👉 http://localhost:5173
+
+
+
+
+
 ## 🙌 Thank You
 
 Thank you for visiting **GOODIE FOODIE**!  
