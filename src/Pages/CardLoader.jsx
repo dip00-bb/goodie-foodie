@@ -22,8 +22,8 @@ const CardLoader = () => {
 
 
     return (
-        <div className='p-8'>
-            <p className='text-center my-6 text-3xl font-bold text-yellow-400'>Top Recipes</p>
+        <div className=''>
+            <p className=' lg:text-6xl mb-8 text-center my-6 text-3xl font-extrabold text-yellow-400 '>Top Recipes</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-4'>
                 {
                     homeRec.map(recipe =>
@@ -31,7 +31,7 @@ const CardLoader = () => {
 
                     (
                         
-                        <div key={recipe._id} className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl">
+                        <div key={recipe._id} className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl rounded-sm">
                             <div className="h-48 w-full bg-gray-200 flex items-center justify-center overflow-hidden">
                                 {recipe.imageURL ? (
                                     <img src={recipe.imageURL} alt={recipe.title} className="object-cover w-full h-full" />

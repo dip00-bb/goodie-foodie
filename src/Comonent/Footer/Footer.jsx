@@ -4,11 +4,13 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
+import { Link, NavLink } from "react-router";
+import { allImages } from "../../assets/assets";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white relative">
-      {/* Top Curve Border */}
+
       <div className="absolute -top-10 left-0 w-full overflow-hidden leading-[0] rotate-180">
         <svg
           className="relative block w-full h-[60px]"
@@ -24,10 +26,10 @@ const Footer = () => {
       </div>
 
 
-      <div className="max-w-7xl mx-auto pt-16 pb-8 px-4 grid md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto pt-16 pb-8 px-4 grid md:grid-cols-3 gap-8 items-center">
 
         <div>
-          <h2 className="text-3xl font-bold text-yellow-400">GOODIE FOODIE</h2>
+          <Link to='/' className="text-3xl font-bold text-yellow-400"> <img className='w-20' src={allImages.weblogo} alt="logo" /> </Link>
           <p className="text-sm mt-2 text-gray-400">
             The ultimate destination for food lovers. Explore, cook, and share!
           </p>
@@ -44,24 +46,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Features</h3>
-          <ul className="space-y-1 text-gray-400 text-sm">
-            <li><a href="#" className="hover:underline">Browse Recipes</a></li>
-            <li><a href="#" className="hover:underline">Save Favorites</a></li>
-            <li><a href="#" className="hover:underline">Submit Your Recipe</a></li>
-            <li><a href="#" className="hover:underline">Weekly Meal Plans</a></li>
-          </ul>
-        </div>
 
-
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Company</h3>
+        <div className="md:flex flex-col items-center">
+          <h3 className="text-lg font-semibold mb-2 md:ml-3">Company</h3>
           <ul className="space-y-1 text-gray-400 text-sm">
-            <li><a href="#" className="hover:underline">About Us</a></li>
-            <li><a href="#" className="hover:underline">Roadmap</a></li>
-            <li><a href="#" className="hover:underline">Careers</a></li>
-            <li><a href="#" className="hover:underline">Blog</a></li>
+            <li><NavLink to='/aboutus' className="hover:underline">About Us</NavLink></li>
+            <li><NavLink to='/support' className="hover:underline">Support</NavLink></li>
+            <li><NavLink to='/contactus' className="hover:underline">Contact Us</NavLink></li>
           </ul>
         </div>
 
@@ -79,7 +70,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright */}
+
       <div className="text-center text-gray-500 text-sm border-t border-gray-800 py-4 px-4">
         &copy; {new Date().getFullYear()} GOODIE FOODIE. All rights reserved.
       </div>

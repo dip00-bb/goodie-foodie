@@ -4,8 +4,11 @@
 import React, { use, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Context/AuthContext';
+import useTitle from '../../CustomHook/useTitle';
 
 const AddRecipe = () => {
+
+    useTitle('Add Recipe')
 
     const [checkedItem, setItem] = useState([])
     const [cuisineType, setCusine] = useState('Italian');

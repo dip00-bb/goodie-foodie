@@ -3,13 +3,23 @@ import Navbar from '../Comonent/Navbar/Navbar';
 import { Outlet } from 'react-router';
 import { ToastContainer} from 'react-toastify';
 import Footer from '../Comonent/Footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+
+
+
+AOS.init()
+
+
 const Layout = () => {
     return (
-        <div>
-            <header>
+        <div >
+            <header className='sticky top-0 z-10'>
                 <Navbar />
             </header>
-            <main className='py-8'>
+            <main className='py-8 max-w-11/12 mx-auto'>
                 <Outlet />
             </main>
             <footer>

@@ -2,13 +2,14 @@ import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import useTitle from '../../CustomHook/useTitle';
 
 
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
+    useTitle('login')
 
     const { googleLogIn, setUser, userLogIn } = use(AuthContext);
 
@@ -37,9 +38,9 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-white p-4">
-            <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border-1 border-green-200">
-                <h2 className="text-3xl font-bold text-center mb-6 text-green-700">Login</h2>
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border-1 border-violet-200">
+                <h2 className="text-3xl font-bold text-center mb-6 text-violet-700">Login</h2>
 
                 <form onSubmit={handleUserLogin} className="space-y-4">
                     <div>
@@ -65,19 +66,19 @@ const Login = () => {
                     </div>
 
                     <div className="flex justify-between text-sm">
-                        <p className="text-green-600 hover:underline">Forgot Password?</p>
+                        <p className="text-yellow-500 hover:underline">Forgot Password?</p>
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+                        className="w-full bg-violet-600 text-white py-2 rounded-lg hover:text-yellow-400 transition"
                     >
                         Login
                     </button>
                 </form>
 
                 <div className="my-6 text-center">
-                    <p className="text-gray-600 text-sm">Don't have an account? <a href="/register" className="hover:underline text-green-500">Register</a></p>
+                    <p className="text-gray-600 text-sm">Don't have an account? <a href="/register" className="hover:underline text-yellow-500">Register</a></p>
                 </div>
 
                 <div className="relative">

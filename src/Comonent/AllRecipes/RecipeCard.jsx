@@ -15,7 +15,7 @@ const RecipeCard = ({ recipe }) => {
 
 
   return (
-    <div className=" rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-pink-300 transition-shadow duration-300">
+    <div className=" rounded-sm overflow-hidden shadow-xl bg-white hover:shadow-violet-300 transition-shadow duration-300">
       <img
         src={imageURL}
         alt={title}
@@ -26,26 +26,26 @@ const RecipeCard = ({ recipe }) => {
 
         <div className="text-sm space-y-1 mb-4 flex justify-between">
           <div className="flex flex-col items-center">
-            <span className="font-semibold text-2xl">⏱</span>
-            <span className="font-semibold text-2xl" >{prepTime} min</span>
+            <span className="font-semibold text-2xl text-gray-500">⏱</span>
+            <span className="font-semibold text-2xl text-gray-500" >{prepTime} min</span>
           </div>
           <div className="flex flex-col items-center">
             <span className="font-semibold text-2xl">🌍</span>
-            <span className="font-semibold text-2xl">{cuisine}</span>
+            <span className="font-semibold text-2xl text-gray-500">{cuisine}</span>
           </div>
           <div className="flex flex-col items-center">
             {categories?.length > 0 && (
               <span className="font-semibold text-2xl">🏷</span>
             )}
-            <span className="font-semibold text-2xl">{categories[0]}</span>
+            <span className="font-semibold text-2xl text-gray-500">{categories[0]}</span>
           </div>
         </div>
         <div className="flex justify-between mb-4">
           <span><FaHeart size={25} fill="red"/></span>
-          <span className="text-2xl font-semibold">{likes}</span>
+          <span className="text-2xl font-semibold text-gray-500">{likes}</span>
         </div>
 
-        <Link to={`/allrecipes/${_id}`} className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 cursor-pointer">
+        <Link to={`/allrecipes/${_id}`} className="w-full bg-yellow-500 hover:bg-violet-500 text-white font-semibold py-2 px-4 rounded-sm transition duration-300 cursor-pointer">
           See Details
         </Link>
       </div>

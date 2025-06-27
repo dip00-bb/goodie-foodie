@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const faqs = [
@@ -43,18 +44,20 @@ const faqs = [
   }
 ];
 
+
+
 export default function FAQAccordion() {
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-4">
-      <h2 className="text-3xl font-bold text-center mb-6 text-yellow-400">Frequently Asked Questions</h2>
+    <div className="space-y-4">
+      <h2 className=" lg:text-6xl mb-8 text-3xl font-extrabold text-center text-yellow-400">Frequently Asked Questions</h2>
       {faqs.map((faq, index) => (
         <div
           key={index}
           className="collapse collapse-arrow bg-base-100 border border-base-300"
         >
           <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
-          <div className="collapse-title font-semibold">{faq.question}</div>
-          <div className="collapse-content text-sm">{faq.answer}</div>
+          <div className="collapse-title font-semibold text-xl lg:text-3xl">{faq.question}</div>
+          <div className="collapse-content text-sm lg:text-2xl">{faq.answer}</div>
         </div>
       ))}
     </div>

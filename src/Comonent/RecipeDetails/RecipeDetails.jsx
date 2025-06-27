@@ -2,8 +2,12 @@ import randomColor from 'randomcolor';
 import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
+import useTitle from '../../CustomHook/useTitle';
 
 const RecipeDetails = () => {
+
+
+    useTitle('Recipe Details')
 
     const singleRecipe = useLoaderData();
     const { imageURL, title, ingredients, instruction, categories, cuisine, likes, prepTime, _id, UID } = singleRecipe

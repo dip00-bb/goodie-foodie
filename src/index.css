@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Playwrite+IT+Moderna:wght@100..400&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 @tailwind utilities;
 
-.active{
-    color: red;
+.active {
+  color: oklch(60.6% 0.25 292.717);
+}
+
+
+.font-oderna {
+  font-family: "Playwrite IT Moderna", cursive;
+}
+
+
+* {
+  font-family: "Merienda", cursive;
 }

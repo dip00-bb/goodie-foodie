@@ -2,8 +2,12 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { toast } from 'react-toastify';
+import useTitle from '../../CustomHook/useTitle';
 
 const Register = () => {
+
+
+  useTitle('Register')
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const navigate = useNavigate();
@@ -67,9 +71,9 @@ const Register = () => {
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border border-green-200">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-6">Register</h2>
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg border border-violet-200">
+        <h2 className="text-3xl font-bold text-center text-violet-700 mb-6">Register</h2>
 
         <form className="space-y-4" onSubmit={handleRegister}>
           <div>
@@ -108,7 +112,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+            className="w-full bg-violet-600 text-white py-2 rounded-lg hover:bg-violet-700 transition"
           >
             Register
           </button>
@@ -116,7 +120,7 @@ const Register = () => {
 
         <div className="my-4 text-center text-sm text-gray-600">
           Already have an account?{' '}
-          <Link to="/login" className="text-green-600 hover:underline">Login</Link>
+          <Link to="/login" className="text-yellow-500 hover:underline">Login</Link>
         </div>
 
         <div className="relative my-6">
@@ -130,7 +134,7 @@ const Register = () => {
 
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-green-50 transition"
+          className="w-full flex items-center justify-center gap-2 border border-gray-300 py-2 rounded-lg hover:bg-violet-50 transition"
         >
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
           <span className='text-black'>Continue with Google</span>
