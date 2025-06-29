@@ -11,7 +11,7 @@ export default function ContactUs() {
       <div className="mx-auto flex md:flex-col lg:flex-row items-center gap-10">
         
 
-        <div className="w-full">
+        <div data-aos="fade-right" data-aos-duration='1000' className="w-full">
           <img
             src='./contactus.jpg'
             alt="Contact us - Cooking support"

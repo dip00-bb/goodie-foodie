@@ -35,7 +35,7 @@ const Navbar = () => {
     const noUsers = <div className="navbar-end flex gap-5"><Link className='btn hidden lg:flex' to='/register'>Register</Link><Link className='btn hidden lg:flex' to='/login'>Login</Link></div>
 
     return (
-        <div className="navbar bg-yellow-400 px-16 rounded-b-sm">
+        <div className="navbar bg-yellow-400 px-8 lg:px-16 rounded-b-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

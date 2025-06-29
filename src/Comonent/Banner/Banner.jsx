@@ -4,11 +4,11 @@ import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
     return (
-        <div className="relative h-[600px] overflow-hidden shadow-xl">
+        <div className="relative lg:h-[700px] overflow-hidden shadow-xl">
             <img
                 src="/banners.jpg"
                 alt="Recipe Book"
-                className="w-full h-full object-cover rounded-sm"
+                className="w-full h-full object-cover rounded-b-sm"
             />
             <div className="absolute inset-0 bg-black/5 flex flex-col items-center justify-center text-white text-center px-4">
                 <h1 className="text-4xl md:text-8xl font-bold mb-4 drop-shadow-lg hover:text-yellow-400 delay-200 duration-500 hover:shadow-2xl">

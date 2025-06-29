@@ -25,7 +25,7 @@ const AllUserRecipe = () => {
     <div className="p-6 bg-white rounded-xl border-2 border-violet-300 shadow-lg overflow-x-auto">
       <h2 className="text-3xl font-oderna text-yellow-500 mb-6">🍽️ All User Recipes</h2>
 
-      <table className="table-auto w-full text-left border border-gray-200">
+      <table className="table-auto w-full text-left border border-gray-200 text-black">
         <thead className="bg-yellow-100 text-gray-800">
           <tr>
             <th className="p-4 border font-medium">Image</th>

@@ -38,7 +38,7 @@ const DashboardMostLiked = () => {
     }
 
     return (
-        <div className="px-6 py-10">
+        <div className="px-6 py-10 text-black">
             <h2 className="text-3xl md:text-4xl font-oderna font-bold text-yellow-600 mb-16">
                 Most Liked Recipes 🍽️
             </h2>

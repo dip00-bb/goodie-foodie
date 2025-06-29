@@ -31,7 +31,7 @@ const CardLoader = () => {
 
                     (
                         
-                        <div key={recipe._id} className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl rounded-sm">
+                        <div data-aos="flip-down" data-aos-duration='1100' key={recipe._id} className="bg-white shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 max-w-xl rounded-sm">
                             <div className="h-48 w-full bg-gray-200 flex items-center justify-center overflow-hidden">
                                 {recipe.imageURL ? (
                                     <img src={recipe.imageURL} alt={recipe.title} className="object-cover w-full h-full" />

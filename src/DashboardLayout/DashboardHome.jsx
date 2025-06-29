@@ -44,7 +44,7 @@ const DashboardHome = () => {
     }));
 
     return (
-        <div className="flex flex-col justify-between gap-10 ">
+        <div className="flex flex-col justify-between gap-10 text-black">
 
             <div className="flex items-center">
                 <div className="avatar text-center flex flex-col px-4">
@@ -53,7 +53,7 @@ const DashboardHome = () => {
                     </div>
                 </div>
                 <div className="flex flex-col gap-6">
-                    <p className="text-3xl md:text-4xl lg:text-6xl font-oderna">Only The Best Recipes</p>
+                    <p className="text-3xl md:text-4xl lg:text-6xl font-oderna text-amber-400">Only The Best Recipes</p>
                     <p className="text-2xl text-gray-500 font-oderna">Profile Overview</p>
                 </div>
             </div>
@@ -86,7 +86,7 @@ const DashboardHome = () => {
 
 
             {chartData?.length > 0 && (
-                <div className="flex gap-8 justify-between">
+                <div className="space-y-4 md:space-y-0 md:flex gap-8 justify-between">
                     <LikesBarChart data={chartData} />
                     <LikesPieChart data={chartData} />
                 </div>

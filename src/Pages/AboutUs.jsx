@@ -10,7 +10,7 @@ export default function AboutUs() {
       <div className="flex flex-col lg:flex-row items-center gap-10">
         
         {/* Image Section */}
-        <div className="w-full">
+        <div data-aos="fade-right" data-aos-duration='1200' className="w-full">
           <img
             src='./chefs.jpg'
             alt="Cooking together"

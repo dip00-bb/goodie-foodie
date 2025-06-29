@@ -69,7 +69,7 @@ const DashBoardMyAllRecipe = () => {
     return (
         <div className="overflow-x-auto p-6 bg-white border-2 border-yellow-400 rounded-xl shadow-md">
             <h2 className="text-2xl font-bold text-yellow-600 font-oderna mb-6">All Recipes</h2>
-            <table className="min-w-full table-auto text-left border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+            <table className="min-w-full table-auto text-left border border-gray-300 rounded-lg overflow-hidden shadow-sm text-black">
                 <thead className="bg-yellow-100 text-gray-800 uppercase text-sm font-semibold">
                     <tr>
                         <th className="p-4 border">Image</th>

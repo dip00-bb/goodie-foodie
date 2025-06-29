@@ -56,6 +56,21 @@ const AllRecipes = () => {
         <div className='p-8'>
             <div className="flex justify-between  gap-4 mb-6 items-center">
                 {/* Filter Dropdown */}
+
+
+
+                {/* Sort Dropdown */}
+
+
+                {/* <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn m-1">Click  ⬇️</div>
+                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                        <li><a>Item 1</a></li>
+                        <li><a>Item 2</a></li>
+                    </ul>
+                </div> */}
+
+                
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn m-1 bg-yellow-400 border-violet-500">Filter</div>
                     <ul tabIndex={0} className="dropdown-content menu rounded-box z-10 w-52 p-2 shadow space-y-2 bg-white">
@@ -76,14 +91,15 @@ const AllRecipes = () => {
                     className="input input-bordered w-full md:w-64 bg-amber-50 focus:border-yellow-400 focus:outline-none text-gray-500"
                 />
 
-                {/* Sort Dropdown */}
-                <div className="dropdown">
+                <div className="dropdown dropdown-end">
+
                     <div tabIndex={0} role="button" className="btn m-1 bg-yellow-400 border-violet-500">Sort</div>
                     <ul tabIndex={0} className="dropdown-content menu rounded-box z-10 w-52 p-2 shadow space-y-2 bg-white">
                         <button className='text-gray-500' onClick={() => handleSort("asc")}>Title A-Z</button>
                         <button className='text-gray-500' onClick={() => handleSort("desc")}>Title Z-A</button>
                     </ul>
                 </div>
+
             </div>
 
             {/* Recipe Grid */}

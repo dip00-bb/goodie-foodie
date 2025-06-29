@@ -67,7 +67,7 @@ const DashBoardAddRecipe = () => {
           🍽️ Share Your Recipe
         </h2>
 
-        <form onSubmit={handleSubmitData} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmitData} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-black">
           {/* Image URL */}
           <div className="col-span-1 md:col-span-2">
             <label className="block mb-2 text-sm font-medium text-gray-700">Image URL</label>

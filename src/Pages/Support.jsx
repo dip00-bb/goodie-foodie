@@ -8,7 +8,7 @@ export default function Support() {
     <section className="min-h-screen py-12 px-6 text-gray-800 lg:flex justify-center">
       <div className="mx-auto flex md:flex-col lg:flex-row  items-center gap-10">
         
-        <div className="w-full">
+        <div data-aos="fade-right" data-aos-duration='1000' className="w-full">
           <img
             src='./support.jpg'
             alt="Customer support"

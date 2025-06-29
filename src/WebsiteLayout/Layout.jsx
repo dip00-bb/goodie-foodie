@@ -19,7 +19,7 @@ const Layout = () => {
             <header className='sticky top-0 z-10'>
                 <Navbar />
             </header>
-            <main className='py-8 max-w-11/12 mx-auto'>
+            <main>
                 <Outlet />
             </main>
             <footer>

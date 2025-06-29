@@ -52,6 +52,7 @@ export default function FAQAccordion() {
       <h2 className=" lg:text-6xl mb-8 text-3xl font-extrabold text-center text-yellow-400">Frequently Asked Questions</h2>
       {faqs.map((faq, index) => (
         <div
+          data-aos="zoom-in" data-aos-duration='1000'
           key={index}
           className="collapse collapse-arrow bg-base-100 border border-base-300"
         >

@@ -15,7 +15,7 @@ const RecipeCard = ({ recipe }) => {
 
 
   return (
-    <div className=" rounded-sm overflow-hidden shadow-xl bg-white hover:shadow-violet-300 transition-shadow duration-300">
+    <div data-aos="zoom-in" data-aos-duration='1000' className=" rounded-sm overflow-hidden shadow-xl bg-white hover:shadow-violet-300 transition-shadow duration-300">
       <img
         src={imageURL}
         alt={title}

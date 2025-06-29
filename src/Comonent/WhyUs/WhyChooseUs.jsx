@@ -18,14 +18,14 @@ export default function CookingLottieSection() {
         <div>
 
           <ul className="space-y-3 text-gray-500 text-base list-disc pl-5">
-            <li className=" md:text-2xl lg:text-3xl ">Tested by experienced home chefs</li>
-            <li className=" md:text-2xl lg:text-3xl ">Easy-to-follow instructions</li>
-            <li className=" md:text-2xl lg:text-3xl ">Quick filters for diet and cuisine</li>
-            <li className=" md:text-2xl lg:text-3xl ">Nutrition facts for health-conscious cooking</li>
-            <li className=" md:text-2xl lg:text-3xl ">Free and constantly updated</li>
+            <li data-aos="zoom-in" className=" md:text-2xl lg:text-3xl ">Tested by experienced home chefs</li>
+            <li data-aos="zoom-in" className=" md:text-2xl lg:text-3xl ">Easy-to-follow instructions</li>
+            <li data-aos="zoom-in" className=" md:text-2xl lg:text-3xl ">Quick filters for diet and cuisine</li>
+            <li data-aos="zoom-in" className=" md:text-2xl lg:text-3xl ">Nutrition facts for health-conscious cooking</li>
+            <li data-aos="zoom-in" className=" md:text-2xl lg:text-3xl ">Free and constantly updated</li>
           </ul>
         </div>
-        <div>
+        <div data-aos="zoom-in" >
           {animationData ? (
             <Lottie animationData={animationData} loop={true} />
           ) : (

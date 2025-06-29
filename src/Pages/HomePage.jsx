@@ -14,11 +14,14 @@ import PromoSection from '../Comonent/Promo/PromoSection';
 const HomePage = () => {
     return (
         <div className='flex flex-col gap-20'>
-            <Banner/>
-            <CardLoader/>
-            <FAQAccordion/>
-            <PromoSection/>
-            <WhyChooseUs/>
+            <Banner />
+            <div className='max-w-11/12 mx-auto flex flex-col gap-25'>
+                <CardLoader />
+                <PromoSection />
+                <FAQAccordion />
+                <WhyChooseUs />
+                
+            </div>
         </div>
     );
 };

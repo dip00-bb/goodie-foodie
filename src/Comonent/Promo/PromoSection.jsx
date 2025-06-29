@@ -25,7 +25,7 @@ export default function PromoSection() {
         </div>
 
         {/* Image Section */}
-        <div className="w-full md:w-1/2">
+        <div data-aos="zoom-in" data-aos-duration='1000' className="w-full md:w-1/2">
           <img
             src='./promo.jpg'
             alt="Happy cooking"
